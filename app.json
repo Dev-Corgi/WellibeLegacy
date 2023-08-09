@@ -21,10 +21,23 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.dev_corgi.Wellibe"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5672a848-804f-4c36-9e09-0d2af53972ea"
+      }
+    },
+    "owner": "dev_corgi",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/5672a848-804f-4c36-9e09-0d2af53972ea"
     }
   }
 }
