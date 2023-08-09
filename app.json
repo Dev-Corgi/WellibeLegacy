@@ -38,6 +38,18 @@
     },
     "updates": {
       "url": "https://u.expo.dev/5672a848-804f-4c36-9e09-0d2af53972ea"
-    }
+    },
+    "hooks": {
+    "postPublish": [
+      {
+        "file": "expo-postpublish-slack-notify",
+        "config": {
+          "webhookUrl": "your webhook url here",
+          "username": "thisIsOptionalAndIsAValidSlackUsername",
+          "channel": "#channel_other_than_default"
+        }
+      }
+    ]
+  }
   }
 }
