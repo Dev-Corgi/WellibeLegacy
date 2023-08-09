@@ -44,9 +44,9 @@
       {
         "file": "expo-postpublish-slack-notify",
         "config": {
-          "webhookUrl": "your webhook url here",
-          "username": "thisIsOptionalAndIsAValidSlackUsername",
-          "channel": "#channel_other_than_default"
+          "webhookUrl": "https://hooks.slack.com/services/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",
+          "username": "이명준",
+          "channel": "#프로젝트"
         }
       }
     ]
