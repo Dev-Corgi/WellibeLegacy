@@ -31,7 +31,6 @@ import CommunicationMain from './screens/CommunicationMain';
 // import { heightPercentage,widthPercentage } from "../ResponsiveSize";
 
 const App = () => {
-  const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
 
   const [isLoading, setIsLoading] = useState(true); // Add loading state
 
@@ -51,7 +50,7 @@ const App = () => {
   return (
     <>
       <NavigationContainer>
-      {hideSplashScreen ? (
+      {loaded ? (
         <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen
             name="LogIn"
