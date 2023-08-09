@@ -1,7 +1,6 @@
 const Stack = createNativeStackNavigator();
 import React,{useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-// import ControllerSetConfig from './controller/ControllerSetConfig'
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
 import {
