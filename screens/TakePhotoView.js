@@ -4,17 +4,49 @@ import LinearGradient from "react-native-linear-gradient";
 import { FontFamily, FontSize, Color } from "../GlobalStyles";
 import { heightPercentage} from "../ResponsiveSize";
 import { useNavigation } from "@react-navigation/native";
-
+import { Camera } from 'expo-camera';
 const TakePhotoView = () => {
+  const [hasPermission, setHasPermission] = useState(null);
+  const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
+  const cameraRef = useRef(null);
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestPermissionsAsync();
+      setHasPermission(status === 'granted');
+    })();
+  }, []);
+
+  const toggleCameraType = () => {
+    setCameraType(prevType =>
+      prevType === Camera.Constants.Type.back
+        ? Camera.Constants.Type.front
+        : Camera.Constants.Type.back
+    );
+  };
+
+  const takePicture = async () => {
+    if (cameraRef.current) {
+      const photo = await cameraRef.current.takePictureAsync();
+      console.log('Photo', photo);
+      navigation.navigate("PhotoCheckView")
+    }
+  };
+
   const navigation = useNavigation();
   return (
     <View style={styles.view}>
       <View style={styles.background} />
-      <Image
+      {/* <Image
         style={[styles.icon, styles.iconPosition]}
         resizeMode="cover"
         source={require("../assets/img-model.png")}
-      />
+      /> */}
+      <Camera
+        style={{ flex: 1 }}
+        type={cameraType}
+        ref={cameraRef}
+      ></Camera>
       <Image
         style={[styles.imgColumngridIcon, styles.iconPosition]}
         resizeMode="cover"
@@ -50,7 +82,7 @@ const TakePhotoView = () => {
       />
       <TouchableOpacity
       style={styles.buttonIcon}
-      onPress={() => navigation.navigate("PhotoCheckView")}
+      onPress={takePicture}
       >
       <Image
       style = {styles.buttonimg}
