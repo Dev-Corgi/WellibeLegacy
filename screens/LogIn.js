@@ -3,8 +3,16 @@ import {Image, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {Border, FontSize, FontFamily, Color} from '../GlobalStyles';
 import {useNavigation} from '@react-navigation/native';
 import { heightPercentage } from "../ResponsiveSize";
+import { Camera } from 'expo-camera';
 const LogIn = () => {
   const navigation = useNavigation();
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestCameraPermissionsAsync();
+      setHasPermission(status === 'granted');
+    })();
+  }, []);
 
   return (
     <View style={styles.login_view}>

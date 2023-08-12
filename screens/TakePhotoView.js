@@ -10,13 +10,6 @@ const TakePhotoView = () => {
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
   const cameraRef = useRef(null);
 
-  useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestCameraPermissionsAsync();
-      setHasPermission(status === 'granted');
-    })();
-  }, []);
-
   const toggleCameraType = () => {
     setCameraType(prevType =>
       prevType === Camera.Constants.Type.back
@@ -36,7 +29,7 @@ const TakePhotoView = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.view}>
-      <View style={styles.background} />
+      {/* <View style={styles.background} /> */}
       {/* <Image
         style={[styles.icon, styles.iconPosition]}
         resizeMode="cover"
@@ -80,7 +73,7 @@ const TakePhotoView = () => {
         resizeMode="cover"
         source={require("../assets/img-facelayer.png")}
       />
-      {/* <TouchableOpacity
+      <TouchableOpacity
       style={styles.buttonIcon}
       onPress={takePicture}
       >
@@ -89,7 +82,7 @@ const TakePhotoView = () => {
         resizeMode="cover"
         source={require("../assets/button.png")}
       />
-      </TouchableOpacity> */}
+      </TouchableOpacity>
       <Text style={styles.subtext}>
         제시된 가이드에 얼굴을 맞춰주세요
       </Text>
