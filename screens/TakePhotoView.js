@@ -1,4 +1,4 @@
-import * as React from "react";
+import React,{useState,useRef, useEffect} from "react";
 import { StyleSheet, View, Image, Text,TouchableOpacity } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { FontFamily, FontSize, Color } from "../GlobalStyles";
@@ -12,7 +12,7 @@ const TakePhotoView = () => {
 
   useEffect(() => {
     (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
+      const { status } = await Camera.requestCameraPermissionsAsync();
       setHasPermission(status === 'granted');
     })();
   }, []);
@@ -57,14 +57,14 @@ const TakePhotoView = () => {
         resizeMode="cover"
         source={require("../assets/img-rectlayer.png")}
       />
-      <LinearGradient
+      {/* <LinearGradient
         style={[styles.foreground2, styles.foregroundPosition]}
         locations={[0, 1]}
         colors={["rgba(7, 16, 39, 0)", "rgba(7, 16, 39, 0.7)"]}
         useAngle={true}
         angle={180}
-      />
-      <LinearGradient
+      /> */}
+      {/* <LinearGradient
         style={[styles.foreground1, styles.foregroundPosition]}
         locations={[0, 0.52, 1]}
         colors={[
@@ -74,13 +74,13 @@ const TakePhotoView = () => {
         ]}
         useAngle={true}
         angle={180}
-      />
+      /> */}
       <Image
         style={[styles.imgFacelayerIcon, styles.iconPosition]}
         resizeMode="cover"
         source={require("../assets/img-facelayer.png")}
       />
-      <TouchableOpacity
+      {/* <TouchableOpacity
       style={styles.buttonIcon}
       onPress={takePicture}
       >
@@ -89,7 +89,7 @@ const TakePhotoView = () => {
         resizeMode="cover"
         source={require("../assets/button.png")}
       />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <Text style={styles.subtext}>
         제시된 가이드에 얼굴을 맞춰주세요
       </Text>
